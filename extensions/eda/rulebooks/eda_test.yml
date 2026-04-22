@@ -1,5 +1,5 @@
 ---
-- name: Hello Events
+- name: Restart nginx
   hosts: all
 
   sources:
@@ -9,8 +9,8 @@
         port: 5000
 
   rules:
-    - name: Say Hello
-      #condition: event.payload.message == "Ansible is super cool"
+    - name: Restart nginx
+      condition: event.payload is defined
       action:
         run_job_template:
           name: Restart nginx
